@@ -1,40 +1,24 @@
-version: '3.8'
 services:
-  app:
+
+  laravel-docker:
+    container_name: laravel-docker
     build: .
-    container_name: patient-registration-laravel-app
-    restart: always
-    working_dir: /var/www
     volumes:
-      - .:/var/www
-    depends_on:
-      - db
-    networks:
-      - laravel
-
-  db:
-    image: mysql:8.0
-    container_name: patient_registration_laravel_db
-    restart: always
+      - .:/var/www/html
+    ports:
+      - 8000:8000
+  
+  mysql_db:
+    image: mysql:latest
     environment:
-      MYSQL_DATABASE: patient_db
-      MYSQL_USER: laravel_user
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: patient_laravel
     ports:
-      - "3306:3306"
-    networks:
-      - laravel
-
-  mail:
-    image: mailhog/mailhog
-    container_name: mailhog
+    - 3306:3306
+  
+  phpmyadmin:
+    image: phpmyadmin:latest
     ports:
-      - "1025:1025"
-      - "8025:8025"
-    networks:
-      - laravel
-
-networks:
-  laravel:
-    driver: bridge
+      - 9001:80
+    environment:
+      - PMA_ARBITRARY=1
