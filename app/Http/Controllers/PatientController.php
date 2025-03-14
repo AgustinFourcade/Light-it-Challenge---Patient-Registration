@@ -2,14 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    public function index(){
-        $this->info('Creating sample users...');
-        $this->command->info('Creating sample users...');
-        $patients = Patient::all();
-        return response()->json(['patients' => $patients], 200);
+    public function getAllPatients()
+    {
+        $patients = Patient::all(); // Obtiene todos los pacientes de la base de datos
+
+        if ($patients->isEmpty()) {
+            return response()->json([
+                'message' => 'No patients found',
+                'data' => [],
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'List of all patients',
+            'patients' => $patients
+        ], 200);
     }
 }
