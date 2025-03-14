@@ -1,3 +1,10 @@
+# Load dependencies
+
+To download dependencies for the project, use this command:
+
+`composer install`
+
+
 # Run the project on local
 
 To run the project, use this command:
@@ -5,15 +12,15 @@ To run the project, use this command:
 `docker-compose up -d --build`
 `php artisan serve`
 
-You will have the backend running in port {$PORT} (declared in .env) and MYSQL running also in port {$PORT}
+You will have the backend running in port 8000 (declared in docker-compose)
 
 
-# Migration Laravel
+# Migration
 
 To run migrations, use this command:
 
-`docker exec laravel-docker bash -c "php artisan migrate"`
-`php artisan migrate`
+`docker exec laravel-docker bash -c "php artisan migrate"` <- just for Docker
+`php artisan migrate` <- just for Laravel
 
 
 # Restart Docker containers
