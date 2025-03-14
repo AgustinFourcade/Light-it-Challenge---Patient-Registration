@@ -12,16 +12,12 @@ To run the project, use this command:
 `docker-compose up -d --build`
 `php artisan serve`
 
-You will have the backend running in port 8000 (declared in docker-compose)
-
 
 # Migration
 
 To run migrations, use this command:
 
-`docker exec laravel-docker bash -c "php artisan migrate"` <- just for Docker
-`php artisan migrate` <- just for Laravel
-
+`docker exec laravel-docker bash -c "php artisan migrate"` <- you must have `DB_HOST=mysql_db` in .env
 
 # Restart Docker containers
 
