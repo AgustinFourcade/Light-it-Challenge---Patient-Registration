@@ -32,3 +32,14 @@ To restart all Docker containers, use this command:
 To stop all Docker containers, use this command:
 
 `docker-compose stop`
+
+# Testing in Postman
+
+`GET:` http://127.0.0.1:8000/api/create
+{
+    "name": "{{$randomFirstName}} {{$randomLastName}}",
+    "email": "{{$randomEmail}}",
+    "address": "{{$randomStreetAddress}}",
+    "phone": "{{$randomPhoneNumber}}",
+    "document_photo": "{{$randomDirectoryPath}}"
+}
