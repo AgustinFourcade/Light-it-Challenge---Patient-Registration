@@ -10,9 +10,9 @@ To download dependencies for the project, use this command:
 To run the project, use this command:
 
 `docker-compose up -d --build` <- run docker
+`docker exec laravel-docker bash -c "php artisan migrate"` <- you must have `DB_HOST=mysql_db` in .env and then revert it to        `DB_HOST=localhost` for local usage
 `php artisan serve` <- local server
 `php artisan queue:work` <- queues for email
-
 
 # Migration
 
