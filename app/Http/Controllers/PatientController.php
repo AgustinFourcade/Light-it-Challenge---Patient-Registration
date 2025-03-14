@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\PatientRegisteredMail;
 
 class PatientController extends Controller
 {
@@ -42,7 +44,8 @@ class PatientController extends Controller
 
         $patient = Patient::create($validator->valid());
 
-//         // Enviar email de confirmación de manera asíncrona
+        // Enviar email de confirmación de manera asíncrona
+        Mail::to($patient->email)->send(new PatientRegisteredMail($patient));
 
         return response()->json([
             'message' => 'Patient registered successfully!',
