@@ -17,7 +17,7 @@ To run the project, use this command:
 
 To run migrations, use this command:
 
-`docker exec laravel-docker bash -c "php artisan migrate"` <- you must have `DB_HOST=mysql_db` in .env
+`docker exec laravel-docker bash -c "php artisan migrate"` <- you must have `DB_HOST=mysql_db` in .env and then revert it to `DB_HOST=localhost` for local usage
 
 # Restart Docker containers
 
