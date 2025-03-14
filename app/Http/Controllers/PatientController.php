@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\PatientRegisteredMail;
+use App\Sms\SmsService;
 
 class PatientController extends Controller
 {
@@ -46,6 +47,10 @@ class PatientController extends Controller
 
         // Enviar email de confirmación de manera asíncrona
         Mail::to($patient->email)->queue(new PatientRegisteredMail($patient));
+
+        //Sms service (for the future)
+        $smsService = new SmsService();
+        // $smsService->sendSms('+1234567890', 'Test message');
 
         return response()->json([
             'message' => 'Patient registered successfully!',
