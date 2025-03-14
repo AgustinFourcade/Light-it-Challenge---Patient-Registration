@@ -45,7 +45,7 @@ class PatientController extends Controller
         $patient = Patient::create($validator->valid());
 
         // Enviar email de confirmación de manera asíncrona
-        Mail::to($patient->email)->send(new PatientRegisteredMail($patient));
+        Mail::to($patient->email)->queue(new PatientRegisteredMail($patient));
 
         return response()->json([
             'message' => 'Patient registered successfully!',

@@ -9,8 +9,9 @@ To download dependencies for the project, use this command:
 
 To run the project, use this command:
 
-`docker-compose up -d --build`
-`php artisan serve`
+`docker-compose up -d --build` <- run docker
+`php artisan serve` <- local server
+`php artisan queue:work` <- queues for email
 
 
 # Migration
